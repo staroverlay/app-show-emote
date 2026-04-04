@@ -1,0 +1,164 @@
+{
+    "id": "show-emote",
+    "name": "Show Emote",
+    "created_at": "2026-04-04T15:09:00-03:00",
+    "updated_at": "2026-04-04T15:09:00-03:00",
+    "version": "1.0.0",
+    "description": "Trigger emotes and show them on screen with cool animations.",
+    "category": "chat",
+    "properties": {
+        "integrations": [
+            {
+                "provider": "twitch",
+                "allow_multiple": false,
+                "is_required": true
+            }
+        ]
+    },
+    "settings": [
+        {
+            "id": "trigger",
+            "type": "group",
+            "label": "Trigger Settings",
+            "children": [
+                {
+                    "id": "triggerType",
+                    "type": "select",
+                    "label": "Trigger Type",
+                    "default": "command",
+                    "options": [
+                        {
+                            "value": "command",
+                            "label": "Command"
+                        },
+                        {
+                            "value": "chat-message",
+                            "label": "Chat Message"
+                        }
+                    ]
+                },
+                {
+                    "id": "command",
+                    "type": "text",
+                    "label": "Command",
+                    "default": "!showemote",
+                    "description": "Command to trigger when trigger type is command, e.g. !showemote <emote>"
+                },
+                {
+                    "id": "commandAlias",
+                    "type": "text",
+                    "label": "Command Alias",
+                    "default": "!se",
+                    "description": "Alias for the command"
+                }
+            ]
+        },
+        {
+            "id": "global",
+            "type": "group",
+            "label": "General Configuration",
+            "children": [
+                {
+                    "id": "timeOnScreen",
+                    "type": "number",
+                    "label": "Time on Screen (sec)",
+                    "description": "How long the emote stays on screen",
+                    "default": 5,
+                    "num_min": 1,
+                    "num_max": 60
+                },
+                {
+                    "id": "maxEmotes",
+                    "type": "number",
+                    "label": "Max Emotes on Screen",
+                    "description": "Maximum simultaneous emotes (0 = infinite)",
+                    "default": 5,
+                    "num_min": 0,
+                    "num_max": 200
+                },
+                {
+                    "id": "maxEmotesPerMessage",
+                    "type": "number",
+                    "label": "Max Emotes Per Message",
+                    "description": "How many emotes to parse from a single chat message (or command)",
+                    "default": 1,
+                    "num_min": 1,
+                    "num_max": 50
+                },
+                {
+                    "id": "useQueue",
+                    "type": "boolean",
+                    "label": "Use Queue",
+                    "description": "If enabled, emotes will queue up when max emotes is reached. If disabled, they are discarded.",
+                    "default": false
+                }
+            ]
+        },
+        {
+            "id": "appearance",
+            "type": "group",
+            "label": "Appearance",
+            "children": [
+                {
+                    "id": "animation",
+                    "type": "select",
+                    "label": "Animation",
+                    "default": "fade",
+                    "options": [
+                        {
+                            "value": "fade",
+                            "label": "Fade In/Out"
+                        },
+                        {
+                            "value": "dvd",
+                            "label": "DVD Bounce"
+                        },
+                        {
+                            "value": "throw",
+                            "label": "Throw"
+                        }
+                    ]
+                },
+                {
+                    "id": "emoteHeight",
+                    "type": "number",
+                    "label": "Emote Size (Height px)",
+                    "default": 112,
+                    "num_min": 16,
+                    "num_max": 512
+                }
+            ]
+        },
+        {
+            "id": "emotes",
+            "type": "group",
+            "label": "Emote Providers",
+            "children": [
+                {
+                    "id": "channelEmotes",
+                    "type": "boolean",
+                    "label": "Channel Emotes (Twitch)",
+                    "default": true
+                },
+                {
+                    "id": "ffz",
+                    "type": "boolean",
+                    "label": "FrankerFaceZ (FFZ)",
+                    "default": true
+                },
+                {
+                    "id": "bttv",
+                    "type": "boolean",
+                    "label": "BetterTTV (BTTV)",
+                    "default": true
+                },
+                {
+                    "id": "seventv",
+                    "type": "boolean",
+                    "label": "7TV",
+                    "default": true
+                }
+            ]
+        }
+    ]
+}
